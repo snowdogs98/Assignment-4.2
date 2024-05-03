@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <html>
+     <!-- Lillian Vigneault -->
+    <head>
+        <title>Validation</title>
+        <link rel='stylesheet' href='style.css' type='text/css' />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Handle form submission
+                $('form').submit(function (event) {
+                    event.preventDefault();
+    
+                    var firstName = $('#firstName').val();
+                    var lastName = $('#lastName').val();
+                    var zipCode = $('#zipCode').val();
+    
+                    var validationMessage = validateName(firstName, lastName, zipCode);
+    
+                    $('#result').text(validationMessage);
+                });
+    
+                // Validate First Name, Last Name, and Zip Code.
+                function validateName(firstName, lastName, zipCode) {
+                    // Check if first name, last name, and zip code are empty
+                    if (!firstName || !lastName || !zipCode) {
+                        return "First name, last name, and zip code are required.";
+                    }
+    
+                    // Check if first name contains only alphabets
+                    if (!/^[a-zA-Z]+$/.test(firstName)) {
+                        return "Invalid first name.";
+                    }
+    
+                    // Check if last name contains only alphabets
+                    if (!/^[a-zA-Z]+$/.test(lastName)) {
+                        return "Invalid last name.";
+                    }
+    
+                    // Check if zip code contains only numbers
+                    if (!/^[0-9]+$/.test(zipCode)) {
+                        return "Invalid zip code.";
+                    }
+    
+                    // Validation passed {
+                         return "Success. While we're here, I'd like to give a quick shoutout to my college, UAT. Check them out... they're awesome :)";
+                    }
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="phppot-container">
+            <h1>Please verify to continue.</h1>
+    
+            <form>
+                <div class="row">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="row">
+    
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="row">
+    
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="text" id="zipCode" required>
+                </div>
+    
+                <button type="submit">Submit</button>
+            </form>
+    
+            <p id="result"></p>
+        </div>
+    </body>

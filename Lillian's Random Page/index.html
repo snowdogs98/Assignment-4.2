@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Lillian's Random Page</h1>
+    <p>Hello world! I see you've arrived here on my page. Welcome!</p>
+    <div id="music"><embed src="entertainer.mp3" autostart="true" loop="true"></div>
+    <p>
+
+        <div><img id="myImage" src="dogmeme.jpeg" /></div>
+        <input type="button" value="Start" onclick="javaScript:startStopImg()" id="startButton">
+        
+        <script> var imgObj;
+            var animate = null;
+            function init(){
+                imgObj = document.getElementById('myImage');
+                imgObj.style.position= 'relative';
+                imgObj.style.left = '0px';
+            }
+            
+            startStopImg = function(){
+                if(animate != null){
+                    stop();
+                } else {
+                    moveRight();
+                    change();
+                }
+            }
+            
+            function moveRight(){
+            imgObj.style.left = (parseInt(imgObj.style.left) + 10) + 'px';
+            animate = setTimeout(moveRight,50); 
+            }
+            
+            change = function(){
+            var elem = document.getElementById("startButton");
+            if (elem.value=="Stop") elem.value = "Start";
+            else elem.value = "Stop";
+            }
+            
+            stop = function(){
+                clearTimeout(animate);
+                animate = null;
+            }
+            window.onload = init();
+            </script>
+    </p>
+
+    <p>Please don't mind the music.</p>
+    <p>(Song playing: The Entertainer by Scott Joplin, which is in the public domain)</p>
+      </body>
+    </html>
+</body>
+</html>
